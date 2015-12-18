@@ -25,7 +25,7 @@ int main (void)
     int numpoints = 20;
     double nt = (distmax - distmin) / (numpoints - 1);
     double vegas[20], dipole[20], distance[20];
-
+//vegas integration
     gsl_rng *r = gsl_rng_alloc (gsl_rng_taus2);
     unsigned long seed = 1UL;
 
@@ -62,6 +62,8 @@ int main (void)
     //double vegastime = timer_stop();
      gsl_monte_vegas_free (sv); 
 
+
+//Monte carlo integration
     double sum;
     double x[6];
 
@@ -102,25 +104,16 @@ int main (void)
     {
     monteerr += fabs(monte[jj] - vegas[jj]);
     }
-
+//prints the output of each integration
    printf("#    Dist               Vegas           Monte       Dipolapprox\n");
     for( int l = 0; l < numpoints; l++)
     {
     double dd = distance[l];
     double vv = fabs(vegas[l]);
-    double hh = fabs(monte[l]);
+    double mm = fabs(monte[l]);
     double di = fabs(dipole[l]);
-    printf("   %.6f         %.6f       %.6f      %.6f\n", dd, vv, hh, di);
+    printf("   %.6f         %.6f       %.6f      %.6f\n", dd, vv, mm, di);
     }
-    
-    //Writes file?
-    /*FILE *fp; 
-    fp = fopen("res.text", "w");
-    fwrite(monte, sizeof(double), sizeof(monte), fp);  
-    fclose(fp); */	
-    
-
-
 
     
     return 0; 
