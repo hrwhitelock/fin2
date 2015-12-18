@@ -21,10 +21,11 @@ $(target): $(target).o integrand.o
 edit : $(target).c
 	$(EDITOR) $<
 	$(INDENT) $<
+
 res: main
 	./main > res
 
-show: res plot.gp
+show: plot.gp
 	$(GNUPLOT) plot.gp
 	eog plot.png
 

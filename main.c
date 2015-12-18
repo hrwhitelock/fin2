@@ -103,15 +103,15 @@ int main (void)
     monteerr += fabs(monte[jj] - vegas[jj]);
     }
 
-   /* printf("#    Dist               Vegas           Monte       Dipolapprox\n");
-    for( int l = 0; l < np; l++)
+   printf("#    Dist               Vegas           Monte       Dipolapprox\n");
+    for( int l = 0; l < numpoints; l++)
     {
     double dd = distance[l];
     double vv = fabs(vegas[l]);
     double hh = fabs(monte[l]);
     double di = fabs(dipole[l]);
     printf("   %.6f         %.6f       %.6f      %.6f\n", dd, vv, hh, di);
-    }*/
+    }
     
     //Writes file?
     /*FILE *fp; 
